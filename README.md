@@ -35,3 +35,6 @@ To run this workflow, you will need:
 2.  **Verify Model Name:** Click on the **"Ollama Chat Model"** node. Ensure the **Model** field (in "Fixed" mode) matches the name of a model you have downloaded in Ollama (e.g., `gemma:2b`).
 3.  **Activate Workflow:** Enable the workflow.
 4.  **Run:** Manually run the "When chat message received" node and enter your message in the `chatInput` field to test it.
+
+<img width="528" height="237" alt="image" src="https://github.com/user-attachments/assets/d6305497-2162-4c67-a06d-b895ab700e91" />
+

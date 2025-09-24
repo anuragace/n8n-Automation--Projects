@@ -1,0 +1,109 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## This is an example of basic LLM Chain connected to an open-source model\n### The Chain is connected to the gemma:2b model, but you can change this\n\nPlease note the initial prompt that guides the model:\n```\nYou are a helpful assistant.\nPlease reply politely to the users.\nUse emojis and a text.\nQ: {{ $json.input }}\nA: \n```\n\nThis way the model \"knows\" that it needs to answer the question right after the `A: `.",
+        "height": 357,
+        "width": 1083
+      },
+      "id": "204e2dbc-1bb2-49a6-8e8c-219881deb78d",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        224,
+        -208
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "6bc20efa-6213-4a71-9c80-32acc5b62eab",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "position": [
+        512,
+        176
+      ],
+      "webhookId": "bf2e38b8-566a-4aeb-8efe-28240f4a6991",
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=You are a helpful assistant. Please reply politely to the users. Use emojis and a text."
+            }
+          ]
+        }
+      },
+      "id": "f67c00f5-6239-454e-8dd5-a5dbb200b066",
+      "name": "Basic LLM Chain",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "position": [
+        736,
+        176
+      ],
+      "typeVersion": 1.5
+    },
+    {
+      "parameters": {
+        "model": "gemma:2b",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        800,
+        368
+      ],
+      "id": "4d8489d5-b2a3-4b13-bd5f-b7fd9a3fb000",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "hwZhdBJ14y8uWcqZ",
+          "name": "Ollama account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "f0fe2d49-6b04-44ae-a782-46c5a4e89c56",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "2bc6c1b404100cf1e1538d53db91759d01f83b768587ee993adf755c319def0b"
+  },
+  "id": "DxMVkh8lgaMDk62I",
+  "tags": []
+}

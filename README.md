@@ -36,5 +36,7 @@ To run this workflow, you will need:
 3.  **Activate Workflow:** Enable the workflow.
 4.  **Run:** Manually run the "When chat message received" node and enter your message in the `chatInput` field to test it.
 
+## Output Sample
+
 <img width="528" height="237" alt="image" src="https://github.com/user-attachments/assets/d6305497-2162-4c67-a06d-b895ab700e91" />
 
